@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Classroom Practice Apps</title>
+<style>
+  :root{
+    --bg:#f6f8fc; --card:#fff; --border:#d7e1ec; --text:#1f2937;
+    --muted:#667085; --blue:#3b82c4; --blue-dark:#245f94;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#fbfcff,var(--bg));padding:32px 20px;color:var(--text)}
+  .wrap{max-width:900px;margin:auto}
+  h1{font-size:28px;margin:0 0 6px}
+  p.sub{color:var(--muted);margin:0 0 28px;font-size:16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 8px 20px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:10px}
+  .card h2{margin:0;font-size:19px}
+  .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.5;flex-grow:1}
+  .card a{display:inline-block;text-align:center;padding:10px 16px;border-radius:12px;background:var(--blue);color:white;text-decoration:none;font-weight:700;border:1px solid var(--blue-dark)}
+  .card a:hover{background:var(--blue-dark)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Classroom Practice Apps</h1>
+  <p class="sub">Pick an activity below to open it.</p>
+  <div class="grid">
+    <div class="card">
+      <h2>Root Word Practice</h2>
+      <p>Practice identifying root words and how prefixes and suffixes change their meaning.</p>
+      <a href="root_practice_app.html">Open App</a>
+    </div>
+    <div class="card">
+      <h2>Money Regrouping Lab</h2>
+      <p>Concrete-to-symbolic subtraction practice with regrouping, using play money.</p>
+      <a href="money_regrouping.html">Open App</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
