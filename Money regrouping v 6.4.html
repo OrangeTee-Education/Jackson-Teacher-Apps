@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Interactive Money Regrouping</title>
+<style>
+:root{
+--bg:#f6f8fc;
+--card:#fff;
+--soft:#eef3f8;
+--border:#d7e1ec;
+--text:#1f2937;
+--muted:#667085;
+--blue:#3b82c4;
+--green:#3aa874;
+--green-dark:#1f7a54;
+--ten:#dcecff;
+--ten-dark:#2e6fa7;
+--one:#def5df;
+--one-dark:#2c7b4d;
+--red:#b53d3d;
+--red-soft:#fdecec;
+--ok:#246b3a;
+--ok-soft:#e7f5ea;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#fbfcff,var(--bg));padding:24px;color:var(--text)}
+.app{max-width:1180px;margin:auto;background:var(--card);border:1px solid var(--border);border-radius:26px;padding:24px;box-shadow:0 18px 45px rgba(0,0,0,.08)}
+.top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+.title h1{margin:0;font-size:28px}.title p{margin:6px 0 0;color:var(--muted)}
+.story{background:#f8fbff;border:1px solid var(--border);padding:14px 16px;border-radius:16px;font-size:18px;line-height:1.5;margin-bottom:18px}
+.problem-box{background:var(--soft);border:1px solid var(--border);padding:16px 22px;border-radius:18px;min-width:220px;text-align:center}
+.problem-label{font-size:12px;text-transform:uppercase;color:var(--muted);font-weight:700;letter-spacing:.08em}.problem{font-size:42px;font-weight:800;margin-top:6px}
+.mid{display:grid;grid-template-columns:220px 1fr;gap:18px}.left-panel{display:flex;flex-direction:column;gap:14px}
+.place-table{background:#f9fbfd;border:1px solid var(--border);border-radius:18px;padding:14px}.place-table table{width:100%;border-collapse:collapse;text-align:center}.place-table th{font-size:12px;text-transform:uppercase;color:var(--muted);padding-bottom:8px}.place-table td{font-size:34px;font-weight:800;padding:8px}
+.vertical{background:#f9fbfd;border:1px solid var(--border);border-radius:18px;padding:16px;font-family:"Courier New",monospace}.vertical-problem{font-size:42px;text-align:right;line-height:1.2;white-space:pre}
+.board-wrap{background:var(--soft);border:1px solid var(--border);border-radius:22px;padding:18px}.labels{display:grid;grid-template-columns:1fr 2px 1fr;gap:16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:0 10px 10px}.board{display:grid;grid-template-columns:1fr 2px 1fr;gap:16px;min-height:320px}.divider{background:#c8d4e0;border-radius:10px}
+.tens-area,.ones-area{display:flex;flex-wrap:wrap;gap:12px;align-content:flex-end;min-height:300px}.ones-area{flex-direction:column-reverse;flex-wrap:nowrap;align-items:flex-start}.ones-row{display:flex;gap:10px;flex-wrap:nowrap}
+.bill{position:relative;display:flex;align-items:center;justify-content:center;font-weight:800;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.08);user-select:none}.bill:before,.bill:after{content:'';position:absolute;width:10px;height:10px;border:1px solid currentColor;border-radius:50%;opacity:.35}.bill:before{left:7px;top:7px}.bill:after{right:7px;bottom:7px}
+.ten{width:115px;height:58px;background:var(--ten);border:2px solid var(--ten-dark);color:var(--ten-dark);font-size:26px;cursor:pointer;transition:.15s}.ten:hover{transform:translateY(-4px) scale(1.03)}.one{width:88px;height:42px;background:var(--one);border:2px solid var(--one-dark);color:var(--one-dark);font-size:22px}
+.controls{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}button{padding:10px 18px;border-radius:12px;border:1px solid var(--border);background:white;font-size:15px;cursor:pointer}button:hover{background:#f3f6fa}.primary{background:var(--blue);color:white;border-color:#245f94;font-weight:700}button:disabled{opacity:.45;cursor:not-allowed}
+.message{margin-top:16px;padding:14px;background:#f9fbfd;border-left:5px solid var(--blue);border-radius:0 14px 14px 0;font-size:16px;line-height:1.5}.question-box{margin-top:14px;padding:14px;background:#fff;border:1px solid var(--border);border-radius:16px}.choice-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.answer-row{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);align-items:center;gap:10px;flex-wrap:wrap}input{width:90px;padding:8px;font-size:24px;text-align:center;border-radius:12px;border:1px solid var(--border)}.result{display:none;padding:8px 12px;border-radius:12px;font-weight:700}.result.ok{display:inline-block;background:var(--ok-soft);color:var(--ok)}.result.no{display:inline-block;background:var(--red-soft);color:var(--red)}
+.flying{position:fixed;width:88px;height:42px;border-radius:12px;border:2px solid var(--one-dark);background:var(--one);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--one-dark);z-index:999;pointer-events:none}.flying:before{content:'$1'}@keyframes popAway{from{transform:scale(1);opacity:1}to{transform:scale(0);opacity:0}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="top"><div class="title"><h1>Money Regrouping Lab</h1><p>Concrete → symbolic subtraction with regrouping</p></div><div class="problem-box"><div class="problem-label">Problem</div><div class="problem" id="problemText"></div></div></div>
+<div class="story" id="story"></div>
+<div class="mid"><div class="left-panel"><div class="place-table"><table><tr><th>Tens</th><th>Ones</th></tr><tr><td id="tensNum"></td><td id="onesNum"></td></tr></table></div><div class="vertical"><div class="vertical-problem" id="verticalProblem"></div></div></div><div class="board-wrap"><div class="labels"><span>$10 Bills</span><span></span><span>$1 Bills</span></div><div class="board"><div class="tens-area" id="tensArea"></div><div class="divider"></div><div class="ones-area" id="onesArea"></div></div></div></div>
+<div class="message" id="message"></div><div class="question-box" id="questionBox"></div>
+<div class="controls"><button class="primary" id="exchangeBtn" disabled>Exchange a $10 bill</button><button class="primary" id="subtractBtn" disabled>Spend the dollars</button><button id="newBtn">New Problem</button></div>
+<div class="answer-row" id="answerRow"><label>Money left:</label><input type="number" id="answerInput" /><button id="checkBtn">Check</button><span class="result" id="result"></span></div>
+</div>
+<script>
+const problems=[[52,7],[63,8],[74,6],[85,8],[71,6],[43,7],[62,5],[91,5]];
+const names=['Maya','Jackson','Leo','Ava','Noah','Ella'];
+const items=['game','toy','book','puzzle','snack','robot'];
+let total,cost,tens,ones,exchanged=false,spent=false,animating=false;
+const problemText=document.getElementById('problemText');
+const story=document.getElementById('story');
+const tensNum=document.getElementById('tensNum');
+const onesNum=document.getElementById('onesNum');
+const verticalProblem=document.getElementById('verticalProblem');
+const tensArea=document.getElementById('tensArea');
+const onesArea=document.getElementById('onesArea');
+const message=document.getElementById('message');
+const questionBox=document.getElementById('questionBox');
+const exchangeBtn=document.getElementById('exchangeBtn');
+const subtractBtn=document.getElementById('subtractBtn');
+const answerRow=document.getElementById('answerRow');
+const answerInput=document.getElementById('answerInput');
+const checkBtn=document.getElementById('checkBtn');
+const result=document.getElementById('result');
+const newBtn=document.getElementById('newBtn');
+function speak(text){if('speechSynthesis' in window){const u=new SpeechSynthesisUtterance(text);speechSynthesis.cancel();speechSynthesis.speak(u);}}
+function startProblem(){
+const p=problems[Math.floor(Math.random()*problems.length)];total=p[0];cost=p[1];tens=Math.floor(total/10);ones=total%10;exchanged=false;spent=false;animating=false;
+const name=names[Math.floor(Math.random()*names.length)];const item=items[Math.floor(Math.random()*items.length)];
+problemText.textContent=`$${total} − $${cost}`;story.innerHTML=`<strong>${name}</strong> had <strong>$${total}</strong>. ${name} wanted to buy a <strong>${item}</strong> that cost <strong>$${cost}</strong>.`;
+exchangeBtn.disabled=true;subtractBtn.disabled=true;answerRow.style.display='none';result.className='result';result.textContent='';answerInput.value='';
+render();renderVertical();askEnoughQuestion();message.innerHTML='First, decide if we have enough one-dollar bills to spend the money.';
+}
+function render(){
+tensArea.innerHTML='';onesArea.innerHTML='';
+let shownOnes=spent?(total-cost)%10:ones+(exchanged?10:0);
+let shownTens=spent?Math.floor((total-cost)/10):(exchanged?tens-1:tens);
+tensNum.textContent=shownTens;onesNum.textContent=shownOnes;
+for(let i=0;i<shownTens;i++){const bill=document.createElement('div');bill.className='bill ten';bill.textContent='$10';if(!exchanged&&!animating){bill.addEventListener('click',()=>exchange(bill));}tensArea.appendChild(bill);}
+let remain=shownOnes;while(remain>0){const row=document.createElement('div');row.className='ones-row';const count=Math.min(5,remain);for(let i=0;i<count;i++){const b=document.createElement('div');b.className='bill one';b.textContent='$1';row.appendChild(b);}onesArea.appendChild(row);remain-=count;}
+}
+function renderVertical(){
+const tensDigit=Math.floor(total/10);const onesDigit=total%10;
+if(!exchanged&&!spent){verticalProblem.textContent=` ${tensDigit}  ${onesDigit}\n−   ${cost}\n────`;return;}
+if(exchanged&&!spent){verticalProblem.textContent=` ${tensDigit-1}  ${onesDigit+10}\n−   ${cost}\n────`;return;}
+if(spent){verticalProblem.textContent=` ${tensDigit-1}  ${onesDigit+10}
+−   ${cost}
+────
+ ${total-cost}`;}
+}
+function askEnoughQuestion(){questionBox.innerHTML=`<strong>Do we have enough $1 bills?</strong><div class="choice-row"><button onclick="enoughAnswer(false)">No</button><button onclick="enoughAnswer(true)">Yes</button></div>`;}
+window.enoughAnswer=function(ans){if(ans){questionBox.innerHTML=`<strong>Try again.</strong> We only have ${ones} one-dollar bills.`;message.innerHTML='We do NOT have enough one-dollar bills yet.';}else{questionBox.innerHTML=`<strong>Correct.</strong> What should we do next?<div class="choice-row"><button onclick="actionAnswer('exchange')">Exchange a $10 bill</button><button onclick="actionAnswer('count')">Count again</button><button onclick="actionAnswer('add')">Add more money</button></div>`;}}
+window.actionAnswer=function(type){if(type==='exchange'){questionBox.innerHTML='<strong>Correct.</strong> Click a blue $10 bill to exchange it into ten $1 bills.';exchangeBtn.disabled=false;message.innerHTML='We need more one-dollar bills, so we will exchange one $10 bill.';speak('Exchange one ten dollar bill for ten one dollar bills.');}else{questionBox.innerHTML='<strong>Not quite.</strong> We need to exchange one ten-dollar bill.';}}
+function exchange(bill){
+if(exchanged||animating)return;animating=true;exchangeBtn.disabled=true;
+const start=bill.getBoundingClientRect();const onesRect=onesArea.getBoundingClientRect();let complete=0;
+for(let i=0;i<10;i++){const fly=document.createElement('div');fly.className='flying';fly.style.left=start.left+'px';fly.style.top=start.top+'px';document.body.appendChild(fly);const global=ones+i;const col=global%5;const row=Math.floor(global/5);const x=onesRect.left+col*98;const y=onesRect.bottom-(row+1)*54;setTimeout(()=>{fly.style.transition='left .45s ease, top .45s ease';fly.style.left=x+'px';fly.style.top=y+'px';setTimeout(()=>{fly.remove();complete++;if(complete===10){exchanged=true;animating=false;render();renderVertical();subtractBtn.disabled=false;message.innerHTML=`We had ${ones} one-dollar bills. We exchanged a $10 bill for 10 more. ${ones} + 10 = <strong>${ones+10}</strong>.`;questionBox.innerHTML='<strong>Now spend the dollars by clicking the button below.</strong>';speak('Now we have enough one dollar bills to subtract.');}},460);},i*60);}
+}
+function subtractMoney(){
+if(!exchanged||spent||animating)return;animating=true;const bills=Array.from(document.querySelectorAll('.one'));const remain=(total-cost)%10;const remove=bills.slice(remain);let done=0;
+remove.forEach((b,i)=>{setTimeout(()=>{b.style.animation='popAway .25s ease forwards';setTimeout(()=>{done++;if(done===remove.length){spent=true;animating=false;render();renderVertical();answerRow.style.display='flex';message.innerHTML='Now count the money that is left.';questionBox.innerHTML='<strong>Count the tens first, then the ones.</strong>';speak('Count the money left.');}},260);},i*60);});
+}
+function checkAnswer(){const correct=total-cost;const val=Number(answerInput.value);if(val===correct){result.textContent=`Correct! $${total} − $${cost} = $${correct}`;result.className='result ok';}else{result.textContent='Not quite. Count the tens, then the ones.';result.className='result no';}}
+exchangeBtn.addEventListener('click',()=>{const firstTen=tensArea.querySelector('.ten');if(firstTen)exchange(firstTen);});
+subtractBtn.addEventListener('click',subtractMoney);newBtn.addEventListener('click',startProblem);checkBtn.addEventListener('click',checkAnswer);answerInput.addEventListener('keydown',e=>{if(e.key==='Enter')checkAnswer();});
+startProblem();
+</script>
+</body>
+</html>
