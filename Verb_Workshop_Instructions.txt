@@ -1,0 +1,35 @@
+VERB WORKSHOP — CUMULATIVE VERB SPELLING
+
+TO OPEN
+1. Save Verb_Spelling_Workshop.html to your computer.
+2. Double-click it to open in Firefox, Chrome, or Edge.
+3. No internet connection, installation, or login is needed.
+
+WHAT'S INCLUDED
+• Learn: five rule groups with 20 verbs each, including the exact original 20 irregular past-tense verbs.
+• Guided practice: identify the rule and type the word; hints and retry are available.
+• Mixed challenge: fill in past-tense or -ing blanks without a rule cue or hint.
+• Progress: separate assisted practice, independent spelling checks, and rule identification.
+• Targeted review: retry forms that have not yet had two clean independent checks.
+
+RULE GROUPS
+1. Add -ed/-ing without altering base letters, including x and two-consonant endings.
+2. Silent final e: add -d for past; drop e before -ing.
+3. Short-vowel, one-syllable verbs: double the final consonant before -ed/-ing.
+4. Consonant + y: change y to i before -ed, keep y before -ing (OPTIONAL NEW RULE).
+5. Irregular past tense: 20 specific verbs from the earlier Yesterday Lab.
+
+NOTES FOR PARENTS
+Start in Guided Practice with 10 mixed questions. Later try a 10-question Mixed Challenge.
+The optional consonant + y rule is excluded from mixed sets by default until you're ready.
+A form is marked '2 clean checks' after two first-try correct independent answers.
+That is a practice milestone, not a validated long-term mastery score.
+Progress is saved only in the current browser/device. Clearing browser site data can erase it.
+This expanded app has its own saved progress; it does not import scores from the original Yesterday Lab.
+
+WORD BANK (EXPANDED)
+• 20 base verbs in each of five groups = 100 total unique base verbs.
+• The 80 regular verbs have both past and -ing forms; the 20 irregular verbs have past forms only.
+• 180 total testable forms.
+• The optional consonant + y group is off by default in mixed practice.
+• Previous progress for existing words is retained when replacing the HTML file in the same browser and location.

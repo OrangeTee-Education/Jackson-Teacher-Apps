@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f8fc">
+<meta name="description" content="Offline interactive English verb spelling lessons, guided practice, and independent retrieval checks.">
+<title>Verb Workshop — Learn · Spell · Remember</title>
+<style>
+:root{--bg:#f4f7fc;--white:#fff;--ink:#1b2942;--muted:#596981;--faint:#e1e7f1;--blue:#304db6;--pale:#eaf0ff;--purple:#6d55ac;--green:#18724c;--mint:#e9f8f0;--amber:#8a5716;--cream:#fff5e6;--red:#a23947;--rose:#ffedf0;--shadow:0 14px 38px rgba(27,44,86,.065)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;margin:0}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #8196ff;outline-offset:3px}button:disabled{opacity:.47;cursor:not-allowed}b,strong{font-weight:800}
+.shell{max-width:1080px;margin:0 auto;padding:26px 22px 60px}.header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:2px 0 24px}.brand{display:flex;align-items:center;gap:13px}.logo{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:#304bb3;color:#fff;font-weight:900;font-size:27px;box-shadow:0 9px 20px #304bb333}.brand h1{margin:0;font-size:25px;line-height:1.2;letter-spacing:-.8px}.brand p{font-size:13px;margin:3px 0 0;color:var(--muted)}.headernote{border:1px solid #d8e1f0;background:#fff;border-radius:40px;padding:9px 15px;color:#435474;font-size:13px;font-weight:700}
+.nav{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:15px;margin-bottom:26px;border-bottom:1px solid #dce3f0}.tab{border:0;background:transparent;color:#465772;font-weight:800;padding:10px 18px;border-radius:12px;white-space:nowrap}.tab:hover:not(.active){background:#e7edf7}.tab.active{background:#304db6;color:#fff}
+.panel{background:white;border:1px solid var(--faint);border-radius:21px;padding:27px;box-shadow:var(--shadow)}.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-bottom:22px}.hero .panel{height:100%}.kicker{color:var(--blue);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:900;margin:0 0 10px}h2{font-size:clamp(25px,3.2vw,36px);line-height:1.17;letter-spacing:-.85px;margin:0 0 12px}h3{font-size:20px;letter-spacing:-.35px;line-height:1.25;margin:0 0 9px}h4{font-size:16px;margin:0 0 6px}.lead{font-size:17px;max-width:60ch}p{margin:7px 0 12px;color:#485970}.mini{font-size:14px;color:var(--muted)}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:17px}.step{padding:12px;background:#f3f6fd;border-radius:13px;color:#465879;font-size:13px}.step b{display:block;font-size:15px;color:#263f94;margin-bottom:4px}
+.btn{background:var(--blue);border:1px solid var(--blue);color:white;padding:12px 19px;min-height:44px;border-radius:12px;font-weight:800}.btn:hover{filter:brightness(.95)}.btn.secondary{color:#31466e;background:#fff;border-color:#cad6e8}.btn.ghost{background:transparent;color:#455678;border-color:transparent}.btn.small{padding:7px 12px;min-height:36px;font-size:13px}.actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px}.line{border:0;border-top:1px solid #e1e7f1;margin:22px 0}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 15px}.sectionhead p{margin:2px 0}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 17px}.chip{border:1px solid #cfd9e9;background:white;color:#405476;border-radius:50px;padding:9px 13px;font-weight:780;font-size:13px}.chip.sel{background:var(--pale);color:#2640a9;border-color:#9bb0ef}
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.rulecard{background:#fff;border:1px solid #dce4f1;border-radius:18px;padding:21px}.rulecard .rule-id{font-size:12px;color:#516eb3;font-weight:900;letter-spacing:.8px;text-transform:uppercase}.rulecard h3{margin:4px 0 7px}.rulecard .explainer{font-weight:700;color:#344963}.examples{display:grid;gap:8px;margin:17px 0}.example{display:flex;justify-content:space-between;gap:8px;background:#f5f7fc;padding:10px 11px;border-radius:10px}.example span{color:#55637b;font-size:13px}.example strong{color:#253e9b;letter-spacing:.1px}.watch{border-left:4px solid #a3b4eb;padding:9px 12px;background:#f8faff;color:#42546c;border-radius:7px;font-size:14px}.rulecard.new{border-color:#e2d8f4}.rulecard.new .rule-id{color:#6a52a9}.newtag{font-size:11px;background:#f0eafa;border-radius:6px;padding:3px 7px;color:#6049a1;font-weight:850;margin-left:6px}.refgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:15px}.refword{background:#f5f7fc;border:1px solid #edf0f6;border-radius:9px;padding:7px 9px;color:#2c3b55;font-size:14px}.refword strong{color:#2e49aa}.refbox{margin-top:14px;padding:13px 15px;border-radius:14px;background:#f5f7ff}.refbox summary{cursor:pointer;font-weight:820;color:#304c97}
+.setup{display:grid;grid-template-columns:1fr 1fr;gap:18px}.choice{border:1px solid #e0e6f1;background:#f8faff;border-radius:15px;padding:17px;margin:0;min-width:0}.choice legend{font-weight:850;color:#30435f;font-size:15px;padding:0 5px}.choice label{display:flex;align-items:flex-start;gap:9px;padding:8px 0;cursor:pointer;color:#3e4e67}.choice label strong{display:block;color:#263c61}.choice label small{display:block;color:#61718a;font-size:12px}.choice input[type=radio],.choice input[type=checkbox]{accent-color:#3556c5;width:18px;height:18px;flex-shrink:0;margin:3px 2px 0 0}.choice.full{margin:15px 0}.selectwrap{display:flex;flex-wrap:wrap;gap:13px;align-items:center;margin:6px 0 20px}.selectwrap label{font-weight:800;font-size:14px}.selectwrap select{background:white;color:var(--ink);padding:10px;border:1px solid #bfccdf;border-radius:11px;max-width:100%}.note{background:#eef3ff;border-left:4px solid #8aa3ef;padding:12px 15px;border-radius:8px;margin:18px 0;color:#435674;font-size:14px}
+.quiz{max-width:790px;margin:0 auto}.quizbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px;font-size:14px;font-weight:800;color:#596b87;margin-bottom:12px}.progressbar{height:10px;border-radius:50px;background:#e8edf6;overflow:hidden;margin:0 0 28px}.progressbar div{height:100%;background:#5874d2;border-radius:50px;transition:width .18s}.prompthead{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.label{display:inline-flex;align-items:center;background:#edf2ff;border-radius:30px;padding:6px 12px;font-weight:850;color:#304db1;font-size:14px}.label.soft{color:#6d568a;background:#f3edff}.cue{background:#f5f7fc;border-radius:13px;padding:13px 16px;color:#334c73;margin:20px 0 15px}.sentence{font-size:clamp(23px,3.3vw,30px);line-height:1.8;letter-spacing:-.3px;color:#26364d;font-weight:710;margin:10px 0 22px}.sentence .blank{min-width:96px;border-bottom:3px solid #7891e2;padding:0 5px;display:inline-block;text-align:center;color:#2644ae}.answerlabel{font-weight:850;display:block;font-size:14px;margin:10px 0 8px}.entry{width:min(100%,420px);font-size:22px;padding:12px 15px;border:2px solid #becce3;border-radius:12px;background:white;color:#1e2d47}.entry:disabled{color:#385079;background:#f8faff}.rulepick{width:min(100%,480px);border:2px solid #c6d1e5;border-radius:11px;padding:12px 13px;background:white;color:#273850}.formtools{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.feedback{margin-top:19px;padding:14px 16px;border-radius:13px;font-weight:720}.feedback p{color:inherit;font-weight:450;margin:5px 0 0}.feedback.ok{background:var(--mint);border:1px solid #bee4d0;color:#166142}.feedback.warn{background:var(--cream);border:1px solid #f0d6a6;color:#6d4c20}.feedback.bad{background:var(--rose);border:1px solid #f0c2c9;color:#863746}.hint{background:#fff6e8;border:1px dashed #e5c68f;border-radius:12px;margin-top:13px;padding:12px 14px;color:#6f5229;font-size:14px}.quizfoot{margin-top:21px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.helper{font-size:13px;color:#708098}.response{border-radius:12px;background:#f5f7fc;padding:14px;margin:14px 0;font-size:17px}.response strong{color:#2e4db5}.results{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:24px 0}.result{border:1px solid #e1e7f0;background:#f6f8fc;padding:16px;border-radius:15px}.result b{font-size:29px;display:block;color:#304aad}.result span{font-size:13px;color:#596a80}.reviewwords{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 22px}.reviewwords span{background:#fff5e6;border:1px solid #edce9e;color:#744f1d;padding:6px 10px;border-radius:9px;font-size:14px;font-weight:800}.summary{font-size:17px;color:#495b75}.miniresult{display:flex;gap:10px;align-items:center;padding:12px 13px;background:#f5f8fc;border-radius:11px;margin-top:8px}.miniresult span{color:#627088;font-size:13px}
+.tablescroll{overflow:auto}.report{width:100%;border-collapse:collapse}.report th,.report td{border-bottom:1px solid #e5ebf3;text-align:left;padding:11px 9px;white-space:nowrap}.report th{font-size:12px;color:#677891;text-transform:uppercase;letter-spacing:.6px}.report td{font-size:14px}.tag{font-weight:800;border-radius:20px;padding:5px 8px;font-size:12px;display:inline-block}.tag.good{background:#e7f7ee;color:#126849}.tag.work{background:#fff4e4;color:#81501a}.tag.new{background:#edf0f6;color:#607189}.report td em{color:#708099;font-style:normal}.report .word{color:#2d46a6;font-weight:800}.progressnote{font-size:14px;color:#62728b}.familygrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0 22px}.familytile{background:#f7f9fd;border:1px solid #e6ecf4;border-radius:14px;padding:13px}.familytile b{display:block;color:#2b4175}.familytile small{display:block;color:#64758d;margin-top:4px}footer{text-align:center;color:#8190a6;font-size:13px;margin:26px 0}
+@media(max-width:750px){.shell{padding:16px 12px 38px}.header{margin:0 0 16px}.headernote{font-size:12px}.brand h1{font-size:21px}.logo{width:45px;height:45px;font-size:23px}.hero,.setup,.rules{grid-template-columns:1fr}.panel{padding:20px;border-radius:17px}.refgrid{grid-template-columns:repeat(2,1fr)}.familygrid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.nav{gap:3px}.tab{padding:10px 12px;font-size:14px}.results{gap:6px}.result{padding:11px}.result b{font-size:23px}.sentence{font-size:23px}.rulecard{padding:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+
+.familywords{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:12px}.familyword{font-size:13px;background:white;border:1px solid #e0e6f1;padding:7px 9px;border-radius:8px;overflow-wrap:anywhere}.familyword strong{color:#304bb3}.familyword span{color:#596981}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="header">
+    <div class="brand"><div class="logo" aria-hidden="true">V</div><div><h1>Verb Workshop</h1><p>Learn the rule · Spell the word · Remember it</p></div></div>
+    <div class="headernote" id="headerNote">Offline spelling practice</div>
+  </header>
+  <nav class="nav" id="nav" aria-label="Workshop sections">
+    <button class="tab active" data-tab="learn" type="button">1 · Learn</button>
+    <button class="tab" data-tab="guided" type="button">2 · Guided practice</button>
+    <button class="tab" data-tab="challenge" type="button">3 · Mixed challenge</button>
+    <button class="tab" data-tab="progress" type="button">4 · Progress</button>
+  </nav>
+  <main id="root"></main>
+  <footer>Works offline. Progress stays in this browser on this device. No accounts or internet required.</footer>
+</div>
+<script>
+(()=>{
+'use strict';
+const RULES=[
+ {id:'add',title:'Add the ending',short:'Add normally',description:'For many verbs, keep every letter and add -ed or -ing.',examples:[['mix','mixed','mixing'],['jump','jumped','jumping'],['play','played','playing']],watch:'Check before doubling: never double x (mix → mixed); do not double after two final consonants (jump → jumped) or a vowel team (cook → cooked). After vowel + y, keep the y (play → played).'},
+ {id:'e',title:'Watch the final e',short:'Final e',description:'For past tense, add just -d. For -ing, drop the silent e and add -ing.',examples:[['hope','hoped','hoping'],['bake','baked','baking'],['smile','smiled','smiling']],watch:'Remember: hope → hoped, but hope → hoping. The e behaves differently for -ed and -ing.'},
+ {id:'double',title:'Double the last consonant',short:'Double',description:'With these one-syllable, short-vowel verbs ending in one consonant, double that consonant before -ed or -ing.',examples:[['hop','hopped','hopping'],['plan','planned','planning'],['hug','hugged','hugging']],watch:'Think short vowel + one final consonant. Do not double x: mix → mixed, NOT mixxed.'},
+ {id:'y',title:'Consonant + y',short:'Consonant + y',new:true,description:'For past tense, change a final consonant + y to -ied. For -ing, leave the y and add -ing.',examples:[['try','tried','trying'],['cry','cried','crying'],['study','studied','studying']],watch:'This is an optional new rule. When a vowel comes before y, keep it: play → played and playing.'},
+ {id:'irregular',title:'Irregular past tense',short:'Irregular',description:'Some verbs do NOT follow the -ed rules. Learn their special past-tense spelling.',examples:[['eat','ate','—'],['think','thought','—'],['hit','hit','—']],watch:'Useful word families: bought / thought / taught, grew / knew, come / came / become / became. Irregular verbs in this workshop are only tested in past tense.'}
+];
+const R=[
+ ['mix','mixed','mixing','add','I','am','the cake batter'],['fix','fixed','fixing','add','I','am','the bike'],['box','boxed','boxing','add','we','are','up the books'],['jump','jumped','jumping','add','I','am','over the line'],['help','helped','helping','add','we','are','our neighbors'],['cook','cooked','cooking','add','we','are','dinner'],['wash','washed','washing','add','I','am','the dishes'],['rain','rained','raining','add','it','is','on the playground'],['play','played','playing','add','they','are','soccer'],['enjoy','enjoyed','enjoying','add','we','are','the book'],
+ ['hope','hoped','hoping','e','I','am','for good news'],['bake','baked','baking','e','we','are','a cake'],['smile','smiled','smiling','e','she','is','at the camera'],['dance','danced','dancing','e','they','are','on the stage'],['close','closed','closing','e','she','is','the door'],
+ ['hop','hopped','hopping','double','the rabbit','is','over the log'],['stop','stopped','stopping','double','the bus','is','at the corner'],['drop','dropped','dropping','double','I','am','the ball'],['plan','planned','planning','double','we','are','a trip'],['hug','hugged','hugging','double','I','am','my dog'],['shop','shopped','shopping','double','we','are','for school supplies'],['grin','grinned','grinning','double','he','is','at the joke'],['beg','begged','begging','double','the puppy','is','for a treat'],['sled','sledded','sledding','double','we','are','down the hill'],
+ ['cry','cried','crying','y','the baby','is','for attention'],['try','tried','trying','y','I','am','a new game'],['study','studied','studying','y','we','are','the spelling rules'],['carry','carried','carrying','y','she','is','a heavy box'],
+ // Expanded add rule: 10 additional base verbs
+ ["look","looked","looking","add","I","am","at a map"],
+ ["work","worked","working","add","we","are","on a project"],
+ ["talk","talked","talking","add","they","are","to the teacher"],
+ ["walk","walked","walking","add","she","is","to the library"],
+ ["ask","asked","asking","add","I","am","a question"],
+ ["clean","cleaned","cleaning","add","we","are","the kitchen"],
+ ["paint","painted","painting","add","he","is","a picture"],
+ ["push","pushed","pushing","add","I","am","the cart"],
+ ["laugh","laughed","laughing","add","she","is","at the joke"],
+ ["kick","kicked","kicking","add","he","is","the soccer ball"],
+ // Expanded e rule: 15 additional base verbs
+ ["race","raced","racing","e","they","are","to the finish line"],
+ ["wave","waved","waving","e","she","is","to her friends"],
+ ["save","saved","saving","e","I","am","money for a bike"],
+ ["live","lived","living","e","we","are","near the park"],
+ ["name","named","naming","e","we","are","the puppies"],
+ ["use","used","using","e","I","am","a ruler"],
+ ["share","shared","sharing","e","we","are","our snacks"],
+ ["move","moved","moving","e","they","are","the furniture"],
+ ["joke","joked","joking","e","he","is","with his friends"],
+ ["trace","traced","tracing","e","I","am","the letters"],
+ ["skate","skated","skating","e","she","is","on the ice"],
+ ["hike","hiked","hiking","e","we","are","along the trail"],
+ ["care","cared","caring","e","she","is","for the puppy"],
+ ["store","stored","storing","e","they","are","the winter coats"],
+ ["arrive","arrived","arriving","e","the train","is","at the station"],
+ // Expanded double rule: 11 additional base verbs
+ ["clap","clapped","clapping","double","they","are","for the singer"],
+ ["grab","grabbed","grabbing","double","he","is","his backpack"],
+ ["slip","slipped","slipping","double","the dog","is","on the ice"],
+ ["skip","skipped","skipping","double","I","am","down the sidewalk"],
+ ["nod","nodded","nodding","double","she","is","her head"],
+ ["rub","rubbed","rubbing","double","we","are","our hands together"],
+ ["pat","patted","patting","double","she","is","the dog on the head"],
+ ["tap","tapped","tapping","double","he","is","on the desk"],
+ ["hum","hummed","humming","double","I","am","a song"],
+ ["trim","trimmed","trimming","double","we","are","the bushes"],
+ ["drag","dragged","dragging","double","I","am","the chair"],
+ // Expanded y rule: 16 additional base verbs
+ ["reply","replied","replying","y","I","am","to the email"],
+ ["worry","worried","worrying","y","she","is","about the storm"],
+ ["hurry","hurried","hurrying","y","they","are","to class"],
+ ["copy","copied","copying","y","he","is","the notes"],
+ ["tidy","tidied","tidying","y","we","are","up the room"],
+ ["dry","dried","drying","y","I","am","the dishes"],
+ ["fry","fried","frying","y","he","is","an egg"],
+ ["bury","buried","burying","y","the squirrel","is","a nut"],
+ ["spy","spied","spying","y","the detective","is","on the suspect"],
+ ["apply","applied","applying","y","he","is","for the job"],
+ ["rely","relied","relying","y","I","am","on the map"],
+ ["multiply","multiplied","multiplying","y","we","are","the numbers"],
+ ["identify","identified","identifying","y","she","is","the birds"],
+ ["simplify","simplified","simplifying","y","we","are","the fractions"],
+ ["notify","notified","notifying","y","she","is","her friends about the change"],
+ ["supply","supplied","supplying","y","the truck","is","water to the campground"]
+].map(([base,past,ing,rule,subject,be,tail])=>({base,past,ing,rule,subject,be,tail}));
+const I=[
+ ['eat','ate','I','an apple'],['come','came','I','home early'],['buy','bought','I','a snack'],['make','made','we','a sandwich'],['grow','grew','the plant','quickly'],['meet','met','I','my friend'],['think','thought','I','about the puzzle'],['rise','rose','the sun','above the trees'],['stick','stuck','I','a note on the door'],['steal','stole','the thief','a jewel'],['become','became','the caterpillar','a butterfly'],['slide','slid','the sled','down the hill'],['hit','hit','I','the ball'],['strike','struck','lightning','a tree'],['say','said','I','hello'],['know','knew','I','the answer'],['take','took','she','a photo'],['spend','spent','we','time reading'],['spin','spun','the wheel','quickly'],['teach','taught','she','the class a song']
+].map(([base,past,subject,tail])=>({base,past,rule:'irregular',subject,tail}));
+const ALL=[...R,...I];
+const STORAGE='verb-workshop-cumulative-v1';
+const root=document.getElementById('root'),nav=document.getElementById('nav');
+const state={tab:'learn',filter:'all',mode:'guided',focus:'all',forms:'both',size:'10',includeY:false,targeted:false,session:null};
+let history={};try{history=JSON.parse(localStorage.getItem(STORAGE))||{}}catch(_){history={}}
+const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ruleBy=id=>RULES.find(r=>r.id===id);
+const mix=a=>{let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b};
+const key=(v,form)=>v.base+':'+form;
+const record=id=>history[id]||{attempts:0,guided:0,firstIndependent:0,streak:0,ruleCorrect:0,ruleAsked:0,lastMode:'',lastCorrect:false};
+const persist=()=>{try{localStorage.setItem(STORAGE,JSON.stringify(history))}catch(e){}};
+const btn=(title,action,kind='',other='')=>`<button class="btn ${kind}" data-action="${action}" type="button" ${other}>${title}</button>`;
+const examples=(r)=>r.examples.map(x=>`<div class="example"><b>${escapeHTML(x[0])}</b><span>past: <strong>${escapeHTML(x[1])}</strong></span><span>-ing: <strong>${escapeHTML(x[2])}</strong></span></div>`).join('');
+function renderLearn(){const show=RULES.filter(r=>state.filter==='all'||state.filter===r.id);
+ return `<section class="hero"><div class="panel"><p class="kicker">The big idea</p><h2>Which rule? Then spell it.</h2><p class="lead">Regular verbs can follow several spelling patterns. Other verbs have an irregular past tense. The goal is to <b>choose the pattern</b> and <b>write the actual word</b>.</p><div class="steps"><div class="step"><b>1 · Learn</b>See and say the pattern.</div><div class="step"><b>2 · Guided</b>Name the rule and type the word.</div><div class="step"><b>3 · Independent</b>Fill in a mixed sentence with no rule hint.</div></div></div><aside class="panel"><p class="kicker">Before you begin</p><h3>Look for what changes</h3><p><b>Yesterday</b> means past tense: <b>hop → hopped</b>.</p><p><b>Right now</b> often needs -ing: <b>hop → hopping</b>.</p><p><b>${ALL.length} base verbs</b> across five groups (${ALL.flatMap(v=>[v.past,...(v.ing?[v.ing]:[])]).length} spelling forms). The original 20 irregular verbs are practiced in past tense only.</p>${btn('Start guided spelling →','goGuided')}</aside></section>
+ <div class="sectionhead"><div><h3>The spelling patterns</h3><p class="mini">Each rule has 20 base verbs. Choose a rule to focus on it, or see all five.</p></div></div>
+ <div class="chips" role="group" aria-label="Rule cards">${[{id:'all',short:'All rules'},...RULES].map(r=>`<button type="button" class="chip ${r.id===state.filter?'sel':''}" data-filter="${r.id}">${escapeHTML(r.short)}${r.new?' · new':''}</button>`).join('')}</div>
+ <div class="rules">${show.map(r=>`<article class="rulecard ${r.new?'new':''}"><div class="rule-id">Spelling rule ${RULES.indexOf(r)+1} · ${ALL.filter(v=>v.rule===r.id).length} base verbs${r.new?'<span class="newtag">OPTIONAL · NEW</span>':''}</div><h3>${escapeHTML(r.title)}</h3><p class="explainer">${escapeHTML(r.description)}</p><div class="examples">${examples(r)}</div><div class="watch"><b>Remember:</b> ${escapeHTML(r.watch)}</div><details class="refbox"><summary>See all ${ALL.filter(v=>v.rule===r.id).length} verbs in this group</summary><div class="familywords">${ALL.filter(v=>v.rule===r.id).map(v=>`<div class="familyword"><b>${escapeHTML(v.base)}</b> → <strong>${escapeHTML(v.past)}</strong>${v.ing?` <span>· ${escapeHTML(v.ing)}</span>`:''}</div>`).join('')}</div></details></article>`).join('')}</div>
+ ${['all','irregular'].includes(state.filter)?`<details class="refbox"><summary>See the original 20 irregular verbs together</summary><div class="refgrid">${I.map(v=>`<div class="refword">${escapeHTML(v.base)} → <strong>${escapeHTML(v.past)}</strong></div>`).join('')}</div></details>`:''}
+ <div class="actions" style="margin-top:22px">${btn('Practice these rules →','goGuided')}${btn('Try a mixed challenge →','goChallenge','secondary')}</div>`;
+}
+function pool(){let candidates=ALL.filter(v=>(state.focus==='all'||state.mode==='challenge'||v.rule===state.focus)&& (v.rule!=='y'||state.includeY||state.focus==='y'));
+ if(state.mode==='challenge'&&state.includeY===false)candidates=candidates.filter(v=>v.rule!=='y');
+ const p=[];for(const v of candidates){if(state.forms==='both'||state.forms==='past')p.push({verb:v,form:'past',id:key(v,'past')});if(v.ing&&(state.forms==='both'||state.forms==='ing'))p.push({verb:v,form:'ing',id:key(v,'ing')})}
+ return state.targeted?p.filter(q=>record(q.id).attempts>0&&record(q.id).streak<2):p;
+}
+function balanced(p,max){let by={};for(const q of p){(by[q.verb.rule]??=[]).push(q)}for(const k of Object.keys(by))by[k]=mix(by[k]);
+ let out=[],keys=mix(Object.keys(by));while(out.length<max&&keys.length){for(const k of [...keys]){if(out.length>=max)break;const row=by[k];if(row.length)out.push(row.pop());if(!row.length)keys=keys.filter(x=>x!==k)}}return out;
+}
+function setupScreen(){const guided=state.mode==='guided', count=pool().length;
+ return `<section class="panel"><p class="kicker">${guided?'Step 2 · Supported spelling':'Step 3 · Independent retrieval'}</p><h2>${guided?'Practice the rule and the spelling':'Mix it up. Choose without help.'}</h2>
+ <p class="lead">${guided?'Choose the spelling pattern and write the missing word. You may ask for a hint and correct your work.':'No rule is given and there are no hints. Read the sentence and spell the correct form yourself, then see the rule that explains it.'}</p>
+ <div class="setup" style="margin-top:22px">
+  <fieldset class="choice"><legend>Which spelling rules?</legend>
+   ${guided?`<label><input type="radio" name="focus" value="all" ${state.focus==='all'?'checked':''}><span><strong>All previously covered rules</strong><small>Regular patterns and all 20 irregular past-tense verbs</small></span></label>${RULES.map(r=>`<label><input type="radio" name="focus" value="${r.id}" ${state.focus===r.id?'checked':''}><span><strong>${escapeHTML(r.title)}${r.new?' (optional new lesson)':''}</strong></span></label>`).join('')}`:
+   `<label><input type="radio" name="targeted" value="false" ${!state.targeted?'checked':''}><span><strong>All mixed patterns</strong><small>Regular and irregular, chosen from different rules</small></span></label><label><input type="radio" name="targeted" value="true" ${state.targeted?'checked':''}><span><strong>Words to revisit</strong><small>Forms practiced before but not yet passed twice independently</small></span></label>`}
+  </fieldset>
+  <fieldset class="choice"><legend>Which verb form?</legend><label><input type="radio" name="forms" value="both" ${state.forms==='both'?'checked':''}><span><strong>Mix past and -ing</strong><small>Irregular verbs appear only in past tense</small></span></label><label><input type="radio" name="forms" value="past" ${state.forms==='past'?'checked':''}><span><strong>Past tense only</strong><small>Yesterday: hopped, cried, thought</small></span></label><label><input type="radio" name="forms" value="ing" ${state.forms==='ing'?'checked':''}><span><strong>-ing only</strong><small>Right now: hopping, crying, hoping</small></span></label>
+  <div class="line"></div><label><input type="checkbox" name="includeY" ${state.includeY?'checked':''}><span><strong>Include consonant + y rule</strong><small>Optional new rule; not included by default unless chosen above</small></span></label></fieldset>
+ </div>
+ <div class="selectwrap" style="margin-top:21px"><label for="count">Questions in this round:</label><select id="count" name="size"><option value="10" ${state.size==='10'?'selected':''}>10 · quick check</option><option value="20" ${state.size==='20'?'selected':''}>20 · longer practice</option><option value="30" ${state.size==='30'?'selected':''}>30 · cumulative review</option><option value="40" ${state.size==='40'?'selected':''}>40 · extended practice</option></select><span class="mini" id="available">${count} possible forms in the chosen set</span></div>
+ <div class="note">${guided?'<b>Guided:</b> A spelling counts as a first-try answer only if no hint or correction was needed. A correct rule choice is counted only if chosen on the first check without a hint.':'<b>Independent:</b> One spelling attempt per question. Two separate first-try independent successes are needed for a form to earn the “2 clean checks” label.'}</div>
+ <div class="actions">${btn(`Start ${guided?'guided practice':'mixed challenge'} →`,'start','',count?'':'disabled')}${btn('Review the rules','goLearn','secondary')}</div>
+ ${count===0?'<p class="mini">No questions match this combination. Try another form, rule, or switch off targeted review.</p>':''}
+ </section>`;
+}
+function buildSentence(q){const v=q.verb;
+ if(q.form==='ing')return ['Right now, '+v.subject+' '+v.be+' ', ' '+v.tail+'.'];
+ const intro=['Yesterday, ','Last week, ','On Monday, '][Math.floor(Math.random()*3)];
+ const subj=v.subject==='I'?v.subject:v.subject;return [intro+subj+' ', ' '+v.tail+'.'];
+}
+function questionScreen(){const s=state.session,q=s.queue[s.idx],v=q.verb,completed=q.done,percent=100*s.idx/s.queue.length;
+ return `<section class="panel quiz"><div class="quizbar"><span>Question ${s.idx+1} of ${s.queue.length}</span><span>${s.mode==='guided'?'Guided practice':'Mixed independent challenge'}</span></div><div class="progressbar" role="progressbar" aria-label="Questions completed" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100"><div style="width:${percent}%"></div></div>
+ <p class="kicker">${q.form==='past'?'Write the past tense':'Write the -ing form'}</p><h2>Spell the missing word</h2><div class="prompthead"><span class="label">Base verb: ${escapeHTML(v.base)}</span><span class="label soft">${q.form==='past'?'Yesterday · past tense':'Right now · -ing'}</span></div>
+ <div class="cue">${q.form==='past'?`Use the past-tense form of <b>${escapeHTML(v.base)}</b>.`:`Use the -ing form of <b>${escapeHTML(v.base)}</b>.`}</div>
+ ${!completed?`<form id="answerForm" autocomplete="off" novalidate><div class="sentence">${escapeHTML(q.parts[0])}<span class="blank" aria-hidden="true">_______</span>${escapeHTML(q.parts[1])}</div><label class="answerlabel" for="answer">Your spelling:</label><input class="entry" id="answer" name="answer" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type the whole word" value="${escapeHTML(q.draft)}" required>
+ ${s.mode==='guided'?`<label class="answerlabel" for="rulechoice">Which rule applies?</label><select id="rulechoice" name="rulechoice" class="rulepick"><option value="">Choose a rule…</option>${RULES.map(r=>`<option value="${r.id}" ${q.ruleDraft===r.id?'selected':''}>${escapeHTML(r.short)}</option>`).join('')}</select>`:''}
+ <div class="formtools"><button class="btn" type="submit">Check spelling</button></div></form>`:
+ `<div class="sentence">${escapeHTML(q.parts[0])}<span class="blank">${escapeHTML(q.correct)}</span>${escapeHTML(q.parts[1])}</div>`}
+ ${q.hints>0&&!completed?`<div class="hint" role="status"><b>Hint ${q.hints}:</b> ${q.hints===1?escapeHTML(ruleBy(v.rule).description):`The spelling starts with <b>${escapeHTML(q.correct.charAt(0).toUpperCase())}</b> and has <b>${q.correct.length}</b> letters.`}</div>`:''}
+ ${q.feedback?`<div class="feedback ${q.feedbackKind}" role="status" aria-live="polite">${q.feedback}</div>`:''}
+ ${completed?`<div class="response"><strong>${escapeHTML(v.base)} → ${escapeHTML(q.correct)}</strong><p>Rule: <b>${escapeHTML(ruleBy(v.rule).title)}</b>. ${escapeHTML(ruleBy(v.rule).description)}</p></div>`:''}
+ <div class="quizfoot">${completed?btn(s.idx===s.queue.length-1?'See results →':'Next question →','next'):
+ `${s.mode==='guided'?btn('Need a hint?','hint','secondary',q.hints>=2?'disabled':''):''}${btn('Skip / show answer','skip','ghost')}`}<span class="helper">${completed?'You can review the rule above.':s.mode==='guided'?'Try without help first. Press Enter to check.':'One try. Spelling counts, not capitalization.'}</span></div></section>`;
+}
+function resultScreen(){const s=state.session,all=s.results,spelled=all.filter(x=>x.spellFirst).length,ruleAsked=all.filter(x=>x.ruleAsked).length,ruleCorrect=all.filter(x=>x.ruleCorrect).length,misses=all.filter(x=>!x.spellFirst || (x.ruleAsked&&!x.ruleCorrect));
+ return `<section class="panel quiz"><p class="kicker">Round complete</p><h2>Nice work finishing ${all.length} sentences.</h2><p class="summary">What matters is what you could spell <b>without help</b>. Correcting an answer is useful practice, but it is recorded differently from first-try recall.</p>
+ <div class="results"><div class="result"><b>${all.length}</b><span>Words attempted</span></div><div class="result"><b>${spelled}</b><span>Spelled first try, no hint</span></div><div class="result"><b>${s.mode==='guided'?ruleCorrect+'/'+ruleAsked:all.length-spelled}</b><span>${s.mode==='guided'?'Rules chosen first try':'Needed correction'}</span></div></div>
+ ${misses.length?`<h3>Good choices for your next review</h3><p class="mini">A word appears below if the spelling or (in Guided Practice) the rule needed more work.</p><div class="reviewwords">${misses.map(x=>`<span>${escapeHTML(x.base)} → ${escapeHTML(x.answer)}</span>`).join('')}</div>`:
+ '<div class="feedback ok"><b>All first-try spellings were correct!</b><p>Come back another day to check whether they stick.</p></div>'}
+ ${s.mode==='guided'?'<p class="mini">Next step: Try a Mixed Challenge. Correct spellings from Guided Practice do not count as independent checks.</p>':'<p class="mini">A form earns “2 clean checks” after two first-try independent answers. These are practice indicators, not proof of long-term mastery.</p>'}
+ <div class="actions" style="margin-top:23px">${btn('Mixed challenge →','goChallenge')}${btn('See progress','goProgress','secondary')}${btn('Guided practice','goGuided','ghost')}</div></section>`;
+}
+function progressScreen(){const items=ALL.flatMap(v=>[{verb:v,form:'past',id:key(v,'past')},...(v.ing?[{verb:v,form:'ing',id:key(v,'ing')}]:[])]);
+ const practiced=items.filter(x=>record(x.id).attempts>0),secure=items.filter(x=>record(x.id).streak>=2),review=practiced.filter(x=>record(x.id).streak<2);
+ const familyCards=RULES.map(rule=>{const set=items.filter(x=>x.verb.rule===rule.id), checks=set.filter(x=>record(x.id).streak>=2).length, correctRules=set.reduce((n,x)=>n+record(x.id).ruleCorrect,0), asked=set.reduce((n,x)=>n+record(x.id).ruleAsked,0);return `<div class="familytile"><b>${escapeHTML(rule.title)}</b><small>${checks} of ${set.length} forms with 2 clean checks · Guided rule choice: ${correctRules} / ${asked}</small></div>`}).join('');
+ return `<div class="panel"><p class="kicker">Student progress</p><h2>What can I spell independently?</h2><p>We track each <b>word + verb form</b> separately. For example, <b>hop → hopped</b> and <b>hop → hopping</b> are two different checks. Supported spelling never automatically counts as independent recall.</p>
+ <div class="results"><div class="result"><b>${practiced.length}</b><span>Forms practiced</span></div><div class="result"><b>${secure.length}</b><span>Two clean checks</span></div><div class="result"><b>${review.length}</b><span>Practiced; need more checks</span></div></div>
+ <div class="note">A form earns <b>2 clean checks</b> after two first-try correct answers in Mixed Challenge. A later mistake resets the streak. This is a practice milestone, not a permanent mastery label. Guided hints or corrections do not increase it.</div>
+ <div class="actions" style="margin:18px 0">${btn('Review words needing work →','reviewChallenge')}${btn('Mixed challenge','goChallenge','secondary')}</div>
+ <h3>Progress by spelling rule</h3><p class="mini">This separates identifying the rule in Guided Practice from spelling the word independently in Mixed Challenge.</p><div class="familygrid">${familyCards}</div>
+ <div class="sectionhead" style="margin-top:20px"><h3>Spelling by word and form</h3><span class="mini">${items.length} total forms · 20 irregular past-tense verbs</span></div>
+ <div class="tablescroll"><table class="report"><thead><tr><th>Base verb</th><th>Target form</th><th>Spelling</th><th>Independent streak</th><th>Current status</th></tr></thead><tbody>${items.map(q=>{const r=record(q.id);return `<tr><td><b>${escapeHTML(q.verb.base)}</b></td><td>${q.form==='past'?'Past tense':'-ing'}</td><td class="word">${escapeHTML(q.verb[q.form])}</td><td>${r.streak} / 2</td><td>${r.attempts===0?'<span class="tag new">Not attempted</span>':r.streak>=2?'<span class="tag good">2 clean checks</span>':'<span class="tag work">Keep practicing</span>'}</td></tr>`}).join('')}</tbody></table></div>
+ <div class="actions" style="justify-content:space-between;margin-top:20px"><span class="progressnote">Progress is stored locally on this device.</span>${btn('Clear all progress','clear','ghost')}</div></div>`;
+}
+function setTab(name){state.tab=name;state.session=null;if(name==='challenge'){state.mode='challenge';state.focus='all'}if(name==='guided'){state.mode='guided';state.targeted=false}render();window.scrollTo(0,0)}
+function render(){for(const n of nav.querySelectorAll('[data-tab]')){n.classList.toggle('active',n.dataset.tab===state.tab);n.setAttribute('aria-current',n.dataset.tab===state.tab?'page':'false')}
+ const entries=Object.values(history).filter(x=>x.attempts>0).length;document.getElementById('headerNote').textContent=`${entries} forms practiced · 20 irregular verbs included`;
+ root.innerHTML=state.tab==='learn'?renderLearn():state.tab==='progress'?progressScreen():state.session?(state.session.done?resultScreen():questionScreen()):setupScreen();
+}
+function start(){state.mode=state.tab==='guided'?'guided':'challenge';const available=pool(),wanted=Number(state.size)||10;if(!available.length)return;
+ const queue=balanced(available,Math.min(wanted,available.length)).map(o=>({...o,correct:o.verb[o.form],parts:buildSentence(o),tries:0,hints:0,draft:'',ruleDraft:'',done:false,feedback:'',feedbackKind:''}));
+ state.session={mode:state.mode,queue,idx:0,results:[],done:false};render();focusAnswer();window.scrollTo(0,0);
+}
+function focusAnswer(){root.querySelector('#answer')?.focus()}
+function complete(q,spellFirst,ruleRight,answered){const s=state.session,r=record(q.id),correct=!!spellFirst;
+ if(s.mode==='guided')ruleRight=q.ruleFirstCorrect===true;
+ const isChallenge=s.mode==='challenge';history[q.id]={...r,attempts:r.attempts+1,guided:r.guided+(isChallenge?0:1),firstIndependent:r.firstIndependent+(isChallenge&&correct?1:0),streak:isChallenge?(correct?r.streak+1:0):r.streak,ruleAsked:r.ruleAsked+(isChallenge?0:1),ruleCorrect:r.ruleCorrect+(!isChallenge&&ruleRight?1:0),lastMode:s.mode,lastCorrect:correct};persist();
+ q.done=true;const entered=q.lastEntry?`You wrote <b>${escapeHTML(q.lastEntry)}</b>. `:'';
+ if(correct&&(!answered || s.mode==='challenge'||ruleRight)){q.feedbackKind='ok';q.feedback='<b>Correct spelling!</b> You recalled the word on your first try.'}
+ else if(answered){q.feedbackKind='ok';q.feedback='<b>Corrected spelling.</b> Fixing a word helps you learn it. We will still practice it independently.'}
+ else{q.feedbackKind='bad';q.feedback=`<b>Correct spelling: ${escapeHTML(q.correct)}.</b><p>${entered}Look closely at the letters that changed.</p>`}
+ if(s.mode==='guided'&&!ruleRight){q.feedback+=`<p>Rule to remember: <b>${escapeHTML(ruleBy(q.verb.rule).title)}</b>.</p>`;if(correct)q.feedbackKind='warn'}
+ s.results.push({base:q.verb.base,answer:q.correct,form:q.form,spellFirst:correct,ruleAsked:s.mode==='guided',ruleCorrect:ruleRight});render();root.querySelector('[data-action="next"]')?.focus();
+}
+function submit(){const s=state.session;if(!s||s.done)return;const q=s.queue[s.idx];if(q.done)return;
+ const field=root.querySelector('#answer');if(!field)return;const raw=field.value.trim(),entry=raw.toLowerCase().replace(/[.!?]+$/,'').trim();if(!entry){field.focus();return}
+ q.lastEntry=raw;q.draft=raw;const choice=root.querySelector('#rulechoice');if(choice)q.ruleDraft=choice.value;
+ if(s.mode==='guided'&&q.tries===0&&q.ruleFirstCorrect===undefined)q.ruleFirstCorrect=q.hints===0&&q.ruleDraft===q.verb.rule;
+ const rightRule=q.ruleDraft===q.verb.rule,correct=entry===q.correct,first=correct&&q.tries===0&&q.hints===0;
+ if(correct){complete(q,first,rightRule,q.tries>0||q.hints>0);return}
+ q.tries++;if(s.mode==='guided'&&q.tries<2){q.feedbackKind='warn';q.feedback='<b>Check the letters and try again.</b><p>You have one more try. A hint is available if you need one.</p>';q.draft='';render();focusAnswer();return}
+ complete(q,false,rightRule,false);
+}
+nav.addEventListener('click',e=>{const tab=e.target.closest('[data-tab]');if(tab)setTab(tab.dataset.tab)});
+root.addEventListener('submit',e=>{if(e.target.id==='answerForm'){e.preventDefault();submit()}});
+root.addEventListener('change',e=>{const a=e.target;if(a.name==='focus'){state.focus=a.value;state.targeted=false;render()}else if(a.name==='forms'){state.forms=a.value;render()}else if(a.name==='includeY'){state.includeY=a.checked;render()}else if(a.name==='targeted'){state.targeted=a.value==='true';render()}else if(a.name==='size'){state.size=a.value}});
+root.addEventListener('input',e=>{const q=state.session?.queue[state.session.idx];if(!q||q.done)return;if(e.target.id==='answer')q.draft=e.target.value;if(e.target.id==='rulechoice')q.ruleDraft=e.target.value});
+root.addEventListener('click',e=>{const f=e.target.closest('[data-filter]');if(f){state.filter=f.dataset.filter;render();return}
+ const a=e.target.closest('[data-action]');if(!a)return;const cmd=a.dataset.action;
+ if(cmd==='goLearn'||cmd==='goGuided'||cmd==='goChallenge'||cmd==='goProgress'){setTab(({goLearn:'learn',goGuided:'guided',goChallenge:'challenge',goProgress:'progress'})[cmd]);return}
+ if(cmd==='start'){start();return}
+ if(cmd==='next'){const s=state.session;if(!s||!s.queue[s.idx].done)return;s.idx++;if(s.idx>=s.queue.length)s.done=true;render();focusAnswer();return}
+ if(cmd==='hint'){const q=state.session?.queue[state.session.idx];if(!q||q.done||q.hints>=2||state.session.mode!=='guided')return;q.draft=root.querySelector('#answer')?.value||'';q.ruleDraft=root.querySelector('#rulechoice')?.value||'';q.hints++;render();focusAnswer();return}
+ if(cmd==='skip'){const q=state.session?.queue[state.session.idx];if(!q||q.done)return;q.ruleDraft=root.querySelector('#rulechoice')?.value||'';q.lastEntry=root.querySelector('#answer')?.value||'';q.ruleFirstCorrect=false;complete(q,false,false,false);return}
+ if(cmd==='reviewChallenge'){state.mode='challenge';state.focus='all';state.forms='both';state.targeted=true;state.includeY=true;state.tab='challenge';state.session=null;render();window.scrollTo(0,0);return}
+ if(cmd==='clear'&&window.confirm('Clear all saved spelling practice for this workshop?')){history={};persist();render()}
+});
+render();
+})();
+</script>
+</body></html>
